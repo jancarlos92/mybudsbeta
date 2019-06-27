@@ -8,6 +8,8 @@
 require 'faker'
 
 
+byebug
+
  99.times do |n|
 
   name  = Faker::Name.name
@@ -20,11 +22,12 @@ require 'faker'
 
   avatar = "beautiful"
 
-  personality_type = 'string'
+  personality_type = 'sativa'
 
   User.create(username: name, email: email, password: password, bio: bio, avatar: avatar, personality_type: personality_type)
 
-  # User.create(username: 'username', email: 'email@emde.com', password: 'passwo
-  # rder12', bio: 'bio', avatar: 'avatar', personality_type: 'sativa')
+
+
+
 
 end

@@ -8,7 +8,7 @@ class Api::V1::FriendRequestsController < ApplicationController
 
 
   def create
-    friend = User.find(params[:friend_id])
+    @friend = User.find(params[:friend_id])
     @friend_request = current_user.friend_requests.new(friend: friend)
 
     if @friend_request.save
@@ -18,7 +18,7 @@ class Api::V1::FriendRequestsController < ApplicationController
     end
   end
 
-  def update
+  def show
   end
 
   def destroy

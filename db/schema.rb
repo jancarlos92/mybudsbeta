@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_164326) do
+ActiveRecord::Schema.define(version: 2019_06_26_172031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,50 @@ ActiveRecord::Schema.define(version: 2019_06_04_164326) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
+  create_table "strain_reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "userPersonality"
+    t.integer "mental"
+    t.integer "physical"
+    t.integer "velocity"
+    t.integer "flavor"
+    t.integer "overall"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "strain_id"
+    t.index ["strain_id"], name: "index_strain_reviews_on_strain_id"
+    t.index ["user_id"], name: "index_strain_reviews_on_user_id"
+  end
+
+  create_table "strains", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "dispensary_id"
+    t.string "avatar"
+    t.string "strain_type"
+    t.string "strain_name"
+    t.string "location"
+    t.string "description"
+    t.integer "strain_reviews_count", default: 0
+    t.integer "mental_indica_score", default: 0
+    t.integer "physical_indica_score", default: 0
+    t.integer "velocity_indica_score", default: 0
+    t.integer "flavor_indica_score", default: 0
+    t.integer "overall_indica_score", default: 0
+    t.integer "mental_sativa_score", default: 0
+    t.integer "physical_sativa_score", default: 0
+    t.integer "velocity_sativa_score", default: 0
+    t.integer "flavor_sativa_score", default: 0
+    t.integer "overall_sativa_score", default: 0
+    t.integer "mental_hybrid_score", default: 0
+    t.integer "physical_hybrid_score", default: 0
+    t.integer "velocity_hybrid_score", default: 0
+    t.integer "flavor_hybrid_score", default: 0
+    t.integer "overall_hybrid_score", default: 0
+    t.index ["dispensary_id"], name: "index_strains_on_dispensary_id"
+    t.index ["user_id"], name: "index_strains_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -64,9 +108,14 @@ ActiveRecord::Schema.define(version: 2019_06_04_164326) do
     t.datetime "updated_at", null: false
     t.string "bio"
     t.string "password_digest"
+    t.boolean "dispensary", default: false
+    t.boolean "dispensaryTAC", default: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "friend_requests", "users"
   add_foreign_key "friendships", "users"
+  add_foreign_key "strain_reviews", "strains"
+  add_foreign_key "strain_reviews", "users"
+  add_foreign_key "strains", "users"
 end
