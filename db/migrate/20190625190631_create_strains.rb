@@ -1,8 +1,6 @@
 class CreateStrains < ActiveRecord::Migration[5.2]
   def change
     create_table :strains do |t|
-        t.references :user, foreign_key: true
-        t.references :dispensary, index: true
         t.string :avatar
         t.string :strain_type
         t.string :strain_name
@@ -24,7 +22,6 @@ class CreateStrains < ActiveRecord::Migration[5.2]
         t.integer :velocity_hybrid_score, default: 0
         t.integer :flavor_hybrid_score, default: 0
         t.integer :overall_hybrid_score, default: 0
-
 
 
     end

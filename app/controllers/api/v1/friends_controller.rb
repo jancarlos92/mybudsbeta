@@ -7,15 +7,6 @@ class Api::V1::FriendsController < ApplicationController
       end
 
 
-
-
-
-
-
-
-
-
-
       def destroy
           @friend.destroy
       end

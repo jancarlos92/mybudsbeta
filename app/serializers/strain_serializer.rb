@@ -1,6 +1,6 @@
 class StrainSerializer < ActiveModel::Serializer
-    attributes :id, :dispensary, :avatar, :strain_type, :strain_name, :location, :description
+    attributes :id, :avatar, :strain_type, :strain_name, :location, :description
 
-    
+
 
 end

@@ -26,7 +26,7 @@ byebug
 
   User.create(username: name, email: email, password: password, bio: bio, avatar: avatar, personality_type: personality_type)
 
-
+  Strain.new(dispensary_id: 1, avatar: nil, strain_type: nil, strain_name: "redred", location: nil, description: nil)
 
 
 

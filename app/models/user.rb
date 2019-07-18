@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+include Rails.application.routes.url_helpers
+
+
 validates :username, presence: true, uniqueness: { case_sensitive: false }
 #
 #
@@ -26,9 +29,16 @@ has_many :friends, through: :friendships
 
 has_many :strain_reviews
 
-has_many :strains, through: :strain_reviews
+has_one :strain, through: :strain_reviews
 
-has_many :strains
+has_many :dispensary_strains
+
+has_many :strains, through: :dispensary_strains
+
+has_one :gallery
+
+has_many :photos, :through => :gallery
+
 
 
 
