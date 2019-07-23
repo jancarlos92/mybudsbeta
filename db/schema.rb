@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_193124) do
+ActiveRecord::Schema.define(version: 2019_07_19_135649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,18 +63,14 @@ ActiveRecord::Schema.define(version: 2019_07_15_193124) do
 
   create_table "galleries", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "photo_id"
-    t.index ["photo_id"], name: "index_galleries_on_photo_id"
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
     t.bigint "gallery_id"
-    t.bigint "user_id"
     t.string "image"
     t.string "description"
     t.index ["gallery_id"], name: "index_photos_on_gallery_id"
-    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "strain_reviews", force: :cascade do |t|
@@ -138,7 +134,6 @@ ActiveRecord::Schema.define(version: 2019_07_15_193124) do
   add_foreign_key "friendships", "users"
   add_foreign_key "galleries", "users"
   add_foreign_key "photos", "galleries"
-  add_foreign_key "photos", "users"
   add_foreign_key "strain_reviews", "strains"
   add_foreign_key "strain_reviews", "users"
 end

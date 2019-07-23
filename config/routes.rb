@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
           resources :friend_requests
 
+          resources :gallery, only: [:update, :show]
+
           post '/login', to: 'auth#create'
 
           get '/current_user', to: 'auth#show'

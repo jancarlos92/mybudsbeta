@@ -28,7 +28,7 @@ class Api::V1::UsersController < ApplicationController
 
           @user = User.create(username: @newUser.username, email: @newUser.email, dob: @newUser.dob.time, password: @newUser.password_digest)
 
-          @user.create_gallery
+          @user.create_gallery!(photos: [])
 
           @token = encode_token(user_id: @user.id)
 
