@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: my-buds-api_development
+  database: mybuds
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,3 +83,12 @@ production:
   database: my-buds-api_production
   username: my-buds-api
   password: <%= ENV['MY-BUDS-API_DATABASE_PASSWORD'] %>
+
+  production:
+  <<: *default
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: Lover92@
+  database: mybuds
+  host: /cloudsql/my-buds-40681:us-east4:mybuds

@@ -1,0 +1,8 @@
+entrypoint: bundle exec rackup --port $PORT
+  env: flex
+  runtime: ruby
+env_variables:
+  SECRET_KEY_BASE: f83260319c035145becc9e789ae6e620d0d13315ffde682d3caf41d2c944e2f4b1d92a7e45f4723ebc
+0a1a82620161ee304d9c69cd7eaaf1edcb2433cec615fa
+beta_settings;
+  cloud_sql_instances: my-buds-40681:us-east4:mybuds
